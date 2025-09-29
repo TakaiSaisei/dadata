@@ -1,0 +1,133 @@
+AllCops:
+  TargetRubyVersion: 3.3
+  SuggestExtensions: false  # Disable extension suggestions
+  NewCops: enable
+  Exclude:
+    - 'Gemfile.lock'
+    - '.*/**'
+    - 'test/fixtures/**/*'
+    - 'tmp/**/*'
+    - '.git/**/*'
+    - 'bin/*'
+    - '.idea/**/*'
+    - '.vscode/**/*'
+    - '.ruby-lsp/**/*'
+    - 'vendor/**/*'
+
+require:
+  - rubocop-minitest
+  - rubocop-rake
+  - rubocop-performance
+
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: single_quotes
+
+Style/StringLiteralsInInterpolation:
+  Enabled: true
+  EnforcedStyle: double_quotes
+
+Layout/LineLength:
+  Max: 120
+  # Allow long lines in test assertions, error messages, and gem requirement messages
+  AllowedPatterns:
+    - '^(\s+)?#'  # Allow long comments
+    - 'assert(_\w+)?\s+.+,\s+".*"$'  # Allow long assertion messages
+    - ".*gem '.*' is required.*"  # Allow long gem requirement messages
+    - ".*gem install.*"  # Allow long gem install instructions
+    - ".*unless.*"  # Allow unless conditions that make code more readable
+
+Layout/ArgumentAlignment:
+  EnforcedStyle: with_first_argument
+
+Layout/HashAlignment:
+  EnforcedHashRocketStyle: table
+  EnforcedColonStyle: table
+  EnforcedLastArgumentHashStyle: always_inspect
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: aligned
+
+Layout/TrailingWhitespace:
+  Enabled: true
+
+Style/Documentation:
+  Enabled: true
+  Exclude:
+    - 'test/**/*'
+    - 'lib/generators/**/*'
+    - 'lib/dadata/api_exceptions.rb'
+
+Style/ClassAndModuleChildren:
+  Enabled: true
+  EnforcedStyle: nested
+  Exclude:
+    - 'test/**/*'
+
+Style/Lambda:
+  EnforcedStyle: literal
+
+Style/NumericPredicate:
+  Enabled: true
+  EnforcedStyle: predicate
+  Exclude:
+    - 'test/**/*'
+
+Performance/RedundantEqualityComparisonBlock:
+  Enabled: true
+
+Minitest/MultipleAssertions:
+  Enabled: true
+  Max: 10
+  Exclude:
+    - 'test/generators/**/*'  # Generator tests often need multiple assertions
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+  Exclude:
+    - 'Gemfile'
+    - 'Rakefile'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'test/**/*'
+    - '*.gemspec'
+    - 'Rakefile'
+    - 'lib/dadata/client/base.rb'  # Allow longer blocks for connection setup
+
+Metrics/MethodLength:
+  Max: 40
+  Exclude:
+    - 'test/**/*'
+
+Metrics/AbcSize:
+  Max: 40
+  Exclude:
+    - 'test/**/*'
+
+Metrics/ClassLength:
+  Max: 150
+  Exclude:
+    - 'test/**/*'
+
+Metrics/CyclomaticComplexity:
+  Max: 8  # Increased from 7 to accommodate validate! and build_connection methods
+
+Metrics/PerceivedComplexity:
+  Max: 9  # Increased to match our codebase's needs
+
+Naming/FileName:
+  Exclude:
+    - 'lib/dadata.rb'
+
+Gemspec/RequiredRubyVersion:
+  Enabled: true
+
+Style/RaiseArgs:
+  EnforcedStyle: exploded  # Prefer raise ErrorClass, 'message' style
+
+Style/GuardClause:
+  Enabled: false  # Sometimes if/else is more readable than guard clauses
+
+Style/IfUnlessModifier:
+  Enabled: false  # Sometimes multi-line if statements are more readable

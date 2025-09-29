@@ -1,0 +1,24 @@
+# frozen_string_literal: true
+
+# Конфигурация клиента DaData API
+#
+# Этот файл создан генератором dadata:initializer и содержит
+# настройки для работы с API DaData.
+#
+# @see https://dadata.ru/api
+# @see https://github.com/ad/dadata
+Dadata.configure do |config|
+  # Ваш API-ключ DaData
+  # Можно получить в личном кабинете: https://dadata.ru/profile/#info
+  config.api_key = '<%= @api_key %>'
+
+  # Ваш секретный ключ DaData
+  # Требуется для работы с некоторыми методами API
+  config.secret_key = '<%= @secret_key %>'
+
+  # Таймаут запросов в секундах
+  config.timeout_sec = <%= @timeout %>
+
+  # Количество подсказок в методах подсказок (suggest)
+  config.suggestions_count = <%= @suggestions_count %>
+end

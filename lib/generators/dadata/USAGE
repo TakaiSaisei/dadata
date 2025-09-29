@@ -1,0 +1,73 @@
+Description:
+  Creates a DaData API initializer for your Rails application.
+  By default, it will store API keys in Rails credentials and create an initializer
+  that reads from them.
+
+Example:
+    rails generate dadata:initializer
+
+    This will create:
+        config/initializers/dadata.rb
+    And update:
+        config/credentials.yml.enc
+
+Options:
+    --api-key=KEY           # Your DaData API key
+                           # Default: DADATA_API_KEY
+
+    --secret-key=KEY        # Your DaData secret key
+                           # Default: DADATA_SECRET_KEY
+
+    --[no-]use-credentials # Whether to store API keys in Rails credentials
+                          # Default: true
+
+    --timeout=SECONDS      # API request timeout in seconds
+                          # Default: 3
+
+    --suggestions-count=N  # Default number of suggestions to return
+                          # Default: 10
+
+Example with options:
+    rails generate dadata:initializer \
+      --api-key=your_api_key \
+      --secret-key=your_secret_key \
+      --no-use-credentials \
+      --timeout=5 \
+      --suggestions-count=20
+
+Описание:
+  Создает инициализатор DaData API для вашего Rails-приложения.
+  По умолчанию, API-ключи будут храниться в Rails credentials,
+  а инициализатор будет настроен на их использование.
+
+Пример:
+    rails generate dadata:initializer
+
+    Будут созданы файлы:
+        config/initializers/dadata.rb
+    И обновлены:
+        config/credentials.yml.enc
+
+Опции:
+    --api-key=КЛЮЧ          # Ваш API-ключ DaData
+                           # По умолчанию: DADATA_API_KEY
+
+    --secret-key=КЛЮЧ       # Ваш секретный ключ DaData
+                           # По умолчанию: DADATA_SECRET_KEY
+
+    --[no-]use-credentials # Использовать ли Rails credentials для хранения ключей
+                          # По умолчанию: true
+
+    --timeout=СЕКУНДЫ      # Таймаут запросов в секундах
+                          # По умолчанию: 3
+
+    --suggestions-count=N  # Количество подсказок по умолчанию
+                          # По умолчанию: 10
+
+Пример с опциями:
+    rails generate dadata:initializer \
+      --api-key=ваш_api_ключ \
+      --secret-key=ваш_секретный_ключ \
+      --no-use-credentials \
+      --timeout=5 \
+      --suggestions-count=20

@@ -1,0 +1,59 @@
+/.bundle/
+/.yardoc
+/_yardoc/
+/coverage/
+/doc/
+/pkg/
+/spec/reports/
+/tmp/
+sig/
+
+*.gem
+*.rbc
+.config
+.env*
+!.env.example
+
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Ruby environment
+.ruby-version
+.ruby-gemset
+.rvmrc
+.ruby-lsp/
+.solargraph.yml
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS files
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+._*
+
+# Test files
+/test/tmp/
+/test/version_tmp/
+/test/reports/
+
+# Documentation
+/.yardoc/
+/rdoc/
+
+# Dependencies
+/vendor/
+Gemfile.lock
+
+# Code coverage
+.nyc_output
+/lib-cov/
+*.lcov
