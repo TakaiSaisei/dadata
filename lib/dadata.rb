@@ -175,7 +175,7 @@ module Dadata
     def clean(name, source)
       @cleaner.clean(name, source)
     rescue StandardError => e
-      Dadata.configuration.logger.error("Error cleaning #{name}: #{e.message}")
+      Dadata.configuration&.logger&.error("Error cleaning #{name}: #{e.message}")
       raise
     end
 
@@ -210,7 +210,7 @@ module Dadata
     def clean_record(structure, record)
       @cleaner.clean_record(structure, record)
     rescue StandardError => e
-      Dadata.configuration.logger.error("Error cleaning record: #{e.message}")
+      Dadata.configuration&.logger&.error("Error cleaning record: #{e.message}")
       raise
     end
 
@@ -232,7 +232,7 @@ module Dadata
     def geolocate(name, lat, lon, radius_meters = 100, **)
       @suggestions.geolocate(name, lat, lon, radius_meters, **)
     rescue StandardError => e
-      Dadata.configuration.logger.error("Error geolocating: #{e.message}")
+      Dadata.configuration&.logger&.error("Error geolocating: #{e.message}")
       raise
     end
 
@@ -249,7 +249,7 @@ module Dadata
     def iplocate(ip, **)
       @suggestions.iplocate(ip, **)
     rescue StandardError => e
-      Dadata.configuration.logger.error("Error iplocating: #{e.message}")
+      Dadata.configuration&.logger&.error("Error iplocating: #{e.message}")
       raise
     end
 
@@ -303,7 +303,7 @@ module Dadata
     def suggest(name, query, count = Dadata.suggestions_count, **)
       @suggestions.suggest(name, query, [count, MAX_SUGGESTIONS].min, **)
     rescue StandardError => e
-      Dadata.configuration.logger.error("Error suggesting: #{e.message}")
+      Dadata.configuration&.logger&.error("Error suggesting: #{e.message}")
       raise
     end
 
@@ -358,7 +358,7 @@ module Dadata
     def find_by_id(name, query, count = Dadata.suggestions_count, **)
       @suggestions.find_by_id(name, query, [count, MAX_SUGGESTIONS].min, **)
     rescue StandardError => e
-      Dadata.configuration.logger.error("Error finding by id: #{e.message}")
+      Dadata.configuration&.logger&.error("Error finding by id: #{e.message}")
       raise
     end
 
@@ -375,7 +375,7 @@ module Dadata
     def find_by_email(query)
       @suggestions.find_by_email(query)
     rescue StandardError => e
-      Dadata.configuration.logger.error("Error finding by email: #{e.message}")
+      Dadata.configuration&.logger&.error("Error finding by email: #{e.message}")
       raise
     end
 
@@ -395,7 +395,7 @@ module Dadata
     def find_affiliated(query, count = Dadata.suggestions_count, **)
       @suggestions.find_affiliated(query, [count, MAX_SUGGESTIONS].min, **)
     rescue StandardError => e
-      Dadata.configuration.logger.error("Error finding affiliated: #{e.message}")
+      Dadata.configuration&.logger&.error("Error finding affiliated: #{e.message}")
       raise
     end
 
@@ -405,7 +405,7 @@ module Dadata
     def balance
       @profile.balance
     rescue StandardError => e
-      Dadata.configuration.logger.error("Error getting balance: #{e.message}")
+      Dadata.configuration&.logger&.error("Error getting balance: #{e.message}")
       raise
     end
 
@@ -415,7 +415,7 @@ module Dadata
     def daily_stats(date = nil)
       @profile.daily_stats(date)
     rescue StandardError => e
-      Dadata.configuration.logger.error("Error getting daily stats: #{e.message}")
+      Dadata.configuration&.logger&.error("Error getting daily stats: #{e.message}")
       raise
     end
 
@@ -425,7 +425,7 @@ module Dadata
     def versions
       @profile.versions
     rescue StandardError => e
-      Dadata.configuration.logger.error("Error getting versions: #{e.message}")
+      Dadata.configuration&.logger&.error("Error getting versions: #{e.message}")
       raise
     end
 
@@ -434,7 +434,7 @@ module Dadata
       @suggestions.close
       @profile.close
     rescue StandardError => e
-      Dadata.configuration.logger.error("Error closing client: #{e.message}")
+      Dadata.configuration&.logger&.error("Error closing client: #{e.message}")
       raise
     end
   end
